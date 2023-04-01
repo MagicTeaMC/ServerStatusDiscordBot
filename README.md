@@ -3,6 +3,7 @@
 Show server usage in your Discord channel  
 ![圖片](https://user-images.githubusercontent.com/95519633/229261360-58715758-bfda-409e-99d5-9dc348f03dfc.png)  
 If you wish to re-publish, please indicate your source and join our Discord server.
+Note: This bot is buggy and it might spam Discord API, so use it at your own risk.
 ```
 npm install
 node index.js
