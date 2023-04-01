@@ -8,7 +8,7 @@ Note: This bot is buggy and it might spam Discord API, so use it at your own ris
 ```
 mv exmaple.env .env
 ```
-and edit it
+and edit `.env`
 ```
 npm install
 node index.js
