@@ -54,7 +54,7 @@ client.on("ready", async () => {
     const uptimeminutes = Math.floor((serveruptime % (60 * 60)) / 60);
     const uptimeseconds = Math.floor(serveruptime % 60);
     const uptimemessage = `${uptimedays}d ${uptimehours}h ${uptimeminutes}m ${uptimeseconds}s`
-    const statusMessage = `CPU Usage: ${cpuUsage}%\nMemory Usage: ${memUsage}\nDisk Usage:\n${disks}Network Usage: ${netUsage}\nUptime: ${uptimemessage}\nLast Update: ${now.toLocaleString()}`
+    const statusMessage = `CPU Usage: ${cpuUsage}%\nMemory Usage: ${memUsage}\nDisk Usage:\n${disks}Network Usage: ${netUsage}\nUptime: ${uptimemessage}\nLast Update: ${now.toLocaleString()}(<t:${Math.floor(Date.now()/1000)}:R>)`
 
     if (statusMessageID) {
       const statusChannel = client.channels.cache.get(channelID)
