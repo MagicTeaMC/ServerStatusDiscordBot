@@ -7,7 +7,6 @@ const client = new Discord.Client({
 })
 require("dotenv").config()
 
-///////// Config /////////
 const token = process.env.token
 const channelID = process.env.channelID
 
@@ -61,7 +60,6 @@ client.on("ready", async () => {
         statusMessageID = message.id
       })
     }
-    console.log("Update!")
   }, 5000)
 })
 
