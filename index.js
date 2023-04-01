@@ -13,7 +13,7 @@ const channelID = process.env.channelID
 let statusMessageID
 
 client.on("ready", async () => {
-  console.log("Bot is ready!")
+  console.log(`debug: Logged in as ${client.user.tag}`);
   const channel = client.channels.cache.get(channelID)
   const messages = await channel.messages.fetch()
   messages.forEach((msg) => {
@@ -47,7 +47,14 @@ client.on("ready", async () => {
       const kbytesOut = bytesOut / 1024
       return `In: ${kbytesIn.toFixed(2)} KB/s Out: ${kbytesOut.toFixed(2)} KB/s`
     })
-    const statusMessage = `CPU Usage: ${cpuUsage}%\nMemory Usage: ${memUsage}\nDisk Usage:\n${disks}Network Usage: ${netUsage}\nLast Update: <t:${Math.floor(Date.now()/1000)}:R>`
+    const now = new Date();
+    const serveruptime = os.uptime();
+    const uptimedays = Math.floor(serveruptime / (24 * 60 * 60));
+    const uptimehours = Math.floor((serveruptime % (24 * 60 * 60)) / (60 * 60));
+    const uptimeminutes = Math.floor((serveruptime % (60 * 60)) / 60);
+    const uptimeseconds = Math.floor(serveruptime % 60);
+    const uptimemessage = `${uptimedays}d ${uptimehours}h ${uptimeminutes}m ${uptimeseconds}s`
+    const statusMessage = `CPU Usage: ${cpuUsage}%\nMemory Usage: ${memUsage}\nDisk Usage:\n${disks}Network Usage: ${netUsage}\nUptime: ${uptimemessage}\nLast Update: ${now.toLocaleString()}`
 
     if (statusMessageID) {
       const statusChannel = client.channels.cache.get(channelID)
@@ -60,6 +67,7 @@ client.on("ready", async () => {
         statusMessageID = message.id
       })
     }
+      console.log(`debug: Update status(${now.toLocaleString()})`)
   }, 5000)
 })
 
