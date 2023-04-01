@@ -36,7 +36,7 @@ client.on("ready", async () => {
         const freeDisk = Math.round(disk.available / 1024 / 1024)
         const usedDisk = totalDisk - freeDisk
         const usedDiskPercentage = Math.round((usedDisk / totalDisk) * 100)
-        diskUsage += `${disk.mount}\n${usedDisk}MB/${totalDisk}MB (${usedDiskPercentage}%)\n`
+        diskUsage += "```" + "\n" + disk.mount + "\n" + usedDisk + "MB/" + totalDisk + "MB (" + usedDiskPercentage + "%" + ")\n" + "```";
       })
       return diskUsage
     })
